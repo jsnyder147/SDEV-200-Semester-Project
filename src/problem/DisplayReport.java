@@ -19,6 +19,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.BorderPane;
@@ -105,22 +107,21 @@ public class DisplayReport {
 		});
 		
 		importReport.setOnMouseClicked(eve ->{
-			if(MainMenu.getIsReportImported()) {
+			if(RecordFile.isReportImported()) {
 				/*
 				String toastMessage = "Report Already Imported";
 				int toastMessageTime = 2000;
 				int fadeInTime = 500;
 				int fadeOutTime = 500;
 				Toast.makeText(stage, toastMessage, toastMessageTime, fadeInTime, fadeOutTime); */
-				MainMenu.confirmImport();
+				RecordFile.confirmImport();
 				
 			} else {
 				FileChooser fileChooser = new FileChooser();
 				fileChooser.setTitle("Open Report File");
 
 				try {
-					MainMenu.getFile(fileChooser);
-					MainMenu.setIsReportImported(true);
+					RecordFile.getFile(fileChooser);
 				} catch (IOException e1) {
 					
 				}
@@ -129,24 +130,35 @@ public class DisplayReport {
 		});
 		
 		saveReport.setOnMouseClicked(event -> {
-			FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Save Report");
-            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("TXT", "*.txt"));
-            File file = fileChooser.showSaveDialog(stage);
-            if (file != null) {
-            	try {
-            		saveFile(file);
-            	}
-            	catch(Exception ex) {
-            		
-            	}
-			/*try {
-			showSaveDialog();
-			} catch(Exception ex) {
-				
-			}*/
-            }
+			
+			if(Patient.getPatients().size() > 0) {
+				FileChooser fileChooser = new FileChooser();
+	            fileChooser.setTitle("Save Report");
+	            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("TXT", "*.txt"));
+	            File file = fileChooser.showSaveDialog(stage);
+	            if (file != null) {
+	            	try {
+	            		RecordFile.saveFile(file);
+	            	}
+	            	catch(Exception ex) {
+	            		
+	            	}
+				/*try {
+				showSaveDialog();
+				} catch(Exception ex) {
+					
+				}*/
+	            }
+			}
+			
+			else {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Save Report");
+				alert.setHeaderText("Report is blank.");
+				alert.showAndWait();
+			}
 		});
+		
 		
 		stage.setScene(reportScene);
 		stage.centerOnScreen();

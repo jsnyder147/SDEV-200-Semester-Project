@@ -78,6 +78,23 @@ public class MainMenu extends Application{
 		});
 		
 		importReport.setOnMouseClicked(ev ->{
+			if(RecordFile.isReportImported()) {
+				RecordFile.confirmImport();
+			} else {
+				FileChooser fileChooser = new FileChooser();
+				fileChooser.setTitle("Open Report File");
+				try { 
+					RecordFile.getFile(fileChooser);
+					DisplayReport report = new DisplayReport();
+				} catch (IOException ex) {
+					System.out.println(ex);
+				}
+			}
+			
+		});
+		
+		/*
+		importReport.setOnMouseClicked(ev ->{
 			if(isReportImported) {
 				confirmImport();
 			} else {
@@ -92,11 +109,11 @@ public class MainMenu extends Application{
 				}
 			}
 			
-		});
+		}); */
 		
 		viewReport.setOnMouseClicked(eve -> {
 			DisplayReport report = new DisplayReport();
-		});
+		}); 
 		
 		// Set Scene and Stage
 		mainScene = new Scene(border, 700, 400);
@@ -107,6 +124,7 @@ public class MainMenu extends Application{
 		primaryStage.show();
 		
 	}
+	
 	
 	public static void confirmImport() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
