@@ -108,12 +108,6 @@ public class DisplayReport {
 		
 		importReport.setOnMouseClicked(eve ->{
 			if(RecordFile.isReportImported()) {
-				/*
-				String toastMessage = "Report Already Imported";
-				int toastMessageTime = 2000;
-				int fadeInTime = 500;
-				int fadeOutTime = 500;
-				Toast.makeText(stage, toastMessage, toastMessageTime, fadeInTime, fadeOutTime); */
 				RecordFile.confirmImport();
 				
 			} else {
@@ -159,7 +153,6 @@ public class DisplayReport {
 			}
 		});
 		
-		
 		stage.setScene(reportScene);
 		stage.centerOnScreen();
 	}
@@ -194,26 +187,6 @@ public class DisplayReport {
 		columns.get(11).setCellValueFactory(new PropertyValueFactory<Patient, String>("amountOwed")); 
 	}
 	
-	private void saveFile(File file) throws Exception {
-		ObservableList<Patient> patients = Patient.getPatients();
-		
-		try(
-				PrintWriter output = new PrintWriter(file);
-			){
-				for(Patient patient : patients) {
-					output.println(patient.toStringAgain());
-				}
-				saved = true;
-
-			} 
-			catch (FileNotFoundException e) {
-				System.out.println(e.getMessage());
-			} 
-		
-	}
-	
-
-	
 	private void showSaveDialog() throws Exception{
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Save Report");
@@ -238,6 +211,7 @@ public class DisplayReport {
 	
 					} 
 					catch (FileNotFoundException e) {
+						
 					} 
 						
 			});

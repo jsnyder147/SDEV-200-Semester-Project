@@ -138,11 +138,6 @@ public abstract class RecordFile {
 			}
 			
 			reportImported = true;
-		/*
-		System.out.println(Patient.getNumOfPatients());
-		for(Patient patient1 : Patient.getPatients()) {
-			System.out.println(patient1);
-		} */
 		
 		} 
 	}
