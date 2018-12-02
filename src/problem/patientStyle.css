@@ -1,0 +1,43 @@
+/* Background For Progrm */
+.infoPane1 {
+
+	-fx-background-color: #E8F3F9;
+	-fx-effect: innershadow(gaussian, rgba(0,0,0,0.7),10,0,0,0);
+}
+
+/* Button Styling */
+.button {
+	-fx-font-size:15px;
+	-fx-font-weight:bold;
+	-fx-background-color: #4682B4;
+}
+
+/* Save Error Message */
+.errorMessage {
+	-fx-font-size: 16px;
+	-fx-font-weight: bold;
+	-fx-text-fill: red;
+}
+
+/* Title on Main Menu */
+.tileDisplay {
+	-fx-font-size: 26px;
+	-fx-text-fill: #4682B4;
+	-fx-padding: 50 0 30 0;
+}
+
+/* Buttons on Main Menu */
+.mainButtons {
+	-fx-font-size:15px;
+	-fx-font-weight:bold;
+	-fx-background-color: #4682B4;
+	-fx-pref-width: 150px;
+}
+
+.labels {
+	-fx-text-alignment: right;
+}
+
+.seper {
+
+}
