@@ -24,7 +24,7 @@ public class Patient {
 	private double doubleAmountOwed;
 	private static ObservableList<Patient> patients = FXCollections.observableArrayList();
 	final static String DATE_FORMAT = "MM/dd/yyyy";
-	private String delimiter = ",";
+	private String delimiter = "^";
 	
 	public Patient() {
 		

@@ -61,6 +61,7 @@ public class DisplayReport {
 		Separator sep3 = new Separator();
 		sep3.setOrientation(Orientation.VERTICAL);
 		sep3.getStyleClass().add("seper");
+
 		
 		// Set Buttons
 		buttonPane.getChildren().addAll(mainMenu, sep, importReport, sep2, addPatient, sep3, saveReport);
@@ -105,11 +106,13 @@ public class DisplayReport {
 		
 		importReport.setOnMouseClicked(eve ->{
 			if(MainMenu.getIsReportImported()) {
+				/*
 				String toastMessage = "Report Already Imported";
 				int toastMessageTime = 2000;
 				int fadeInTime = 500;
 				int fadeOutTime = 500;
-				Toast.makeText(stage, toastMessage, toastMessageTime, fadeInTime, fadeOutTime);
+				Toast.makeText(stage, toastMessage, toastMessageTime, fadeInTime, fadeOutTime); */
+				MainMenu.confirmImport();
 				
 			} else {
 				FileChooser fileChooser = new FileChooser();
