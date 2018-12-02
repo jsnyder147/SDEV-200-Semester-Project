@@ -1,4 +1,4 @@
-package problem;
+ package problem;
 
 public class InputErrorException extends Exception{
 	
